@@ -39,7 +39,7 @@ public class ExamServce {
 	 * ExamDaoMpl mpl = new ExamDaoMpl(); mpl.updateExam(s1);
 	 */
 	// }
-	public void createExam(HttpServletRequest request,
+	public boolean createExam(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException,
 			SQLException {
 		String DB_URL = "jdbc:mysql://localhost:3306/exam?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
@@ -58,7 +58,7 @@ public class ExamServce {
 
 		try {
 			String sql = null;
-			sql = "select * from problem where cha_no= ? and cha_mpoint= ? and pro_dif= ? and pro_type= ? order by rand() limit ?";
+			sql = "select * from problem where cha_no= ? and cha_mpoint= ? and ? and pro_type= ? order by rand() limit ?";
 			stmt = conn.prepareStatement(sql);
 
 			String tst_no = request.getParameter("tst_no");
@@ -75,11 +75,29 @@ public class ExamServce {
 			String tst_time = time.format(nowDate);
 			System.out.println(tst_time);
 
+			if (tst_dif.contains("-")) {
+				String[] difList = tst_dif.split("-");
+				String maxn = Integer.parseInt(difList[0]) > Integer
+						.parseInt(difList[1]) ? difList[0] : difList[1];
+				String minn = Integer.parseInt(difList[0]) < Integer
+						.parseInt(difList[1]) ? difList[0] : difList[1];
+				System.out.println("max=" + maxn + " min=" + minn);
+				sql = "select * from problem where cha_no= ? and cha_mpoint= ? and pro_dif between ? and ? and pro_type= ? order by rand() limit ?";
+				stmt = conn.prepareStatement(sql);
+				stmt.setString(3, minn);
+				stmt.setString(4, maxn);
+				stmt.setString(5, tst_type);
+				stmt.setInt(6, Integer.parseInt(tst_num));
+			} else {
+				sql = "select * from problem where cha_no= ? and cha_mpoint= ? and pro_dif ? and pro_type= ? order by rand() limit ?";
+				stmt = conn.prepareStatement(sql);
+				stmt.setString(3, tst_dif);
+				stmt.setString(4, tst_type);
+				stmt.setInt(5, Integer.parseInt(tst_num));
+			}
+
 			stmt.setString(1, cha_no);
 			stmt.setString(2, cha_mpoint);
-			stmt.setString(3, tst_dif);
-			stmt.setString(4, tst_type);
-			stmt.setInt(5, Integer.parseInt(tst_num));
 
 			ResultSet rs = stmt.executeQuery();
 
@@ -96,12 +114,15 @@ public class ExamServce {
 
 			if (num != Integer.parseInt(tst_num)) {
 				System.out.println("符合条件的题目数量不足！");
+				return false;
 			} else {
 				ExamDaoMpl mpl = new ExamDaoMpl();
 				mpl.insertExam(e);
+				return true;
 			}
 		} catch (Exception ee) {
 			ee.printStackTrace();
 		}
+		return false;
 	}
 }

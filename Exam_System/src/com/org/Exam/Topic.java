@@ -63,18 +63,21 @@ public class Topic extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException,
 			SQLException {
 		response.setContentType("text/html");
-		ExamServce es=new ExamServce();
-		es.createExam(request, response);
-		
-		
+		ExamServce es = new ExamServce();
+		boolean flag = es.createExam(request, response);
+
 		PrintWriter out = response.getWriter();
 		String tst_name = request.getParameter("tst_name");
-		out.println("<script language='javascript'>alert('"+tst_name+"已创建完成')</script>");
-		
+		if (flag) {
+			out.println("<script language='javascript'>alert('" + tst_name
+					+ "已创建完成')</script>");
+		} else {
+			out.println("<script language='javascript'>alert('试题创建失败！')</script>");
+		}
+
 	}
 
-	/*public void Test() {
-		ExamServce es = new ExamServce();
-		es.test();
-	}*/
+	/*
+	 * public void Test() { ExamServce es = new ExamServce(); es.test(); }
+	 */
 }
