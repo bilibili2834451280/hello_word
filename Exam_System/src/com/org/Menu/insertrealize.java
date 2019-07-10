@@ -27,13 +27,13 @@ public class insertrealize implements ALLinterface{
 	    return conn;
 	}
 	public int Insert(String a,String PRO_DETAIL,String c,String PRO_KEYW,String z,
-			String f,String CHA_TITLE,String CHA_MPOINT,String CHA_TYPE,String lssb){
+			String f,String CHA_TITLE,String CHA_MPOINT,String CHA_TYPE){
 	       Connection conn = getConn();
 		   int i = 0;
 		    
 		    PreparedStatement pstmt=null;
 		    try {
-		    	String sql = "insert into problem values(?,?,?,?,?,?,?,?,?,?)";
+		    	String sql = "insert into problem values(?,?,?,?,?,?,?,?,?,0)";
 		        pstmt = (PreparedStatement) conn.prepareStatement(sql);
 		        pstmt.setString(1, a);
 		        pstmt.setString(2,PRO_DETAIL );
@@ -44,7 +44,7 @@ public class insertrealize implements ALLinterface{
 		        pstmt.setString(7,CHA_TITLE );
 		        pstmt.setString(8,CHA_MPOINT );
 		        pstmt.setString(9,CHA_TYPE );
-		        pstmt.setString(10,lssb );
+		        
 		        System.out.println("fhznb");
 		        i=pstmt.executeUpdate();
 		        pstmt.close();

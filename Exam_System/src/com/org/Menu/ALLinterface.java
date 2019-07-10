@@ -5,6 +5,6 @@ public interface ALLinterface {
 	void updateinfo(real INFO);
 	boolean check(String no);
 	int Insert(String pro_no,String pro_detail,String pro_ansno,String pro_keyw,
-			String pro_dif,String cha_no,String cha_title,String cha_mpoString,String pro_type,String lssb);
+			String pro_dif,String cha_no,String cha_title,String cha_mpoString,String pro_type);
 	int delete(String no);
 }

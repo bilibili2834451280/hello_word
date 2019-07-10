@@ -87,7 +87,7 @@ public class selectrealize implements ALLinterface{
 	@Override
 	public int Insert(String pro_no, String pro_detail, String pro_ansno,
 			String pro_keyw, String pro_dif, String cha_no, String cha_title,
-			String cha_mpoString, String pro_type, String lssb) {
+			String cha_mpoString, String pro_type) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

@@ -27,7 +27,7 @@ public class InterfaceService {
 		}
 		else
 		{
-			out.println("查询不到该试题！");
+			out.println("<script language='javascript'>alert('查询不到该试题！')</script>");
 		}
 	}
 	
@@ -48,7 +48,7 @@ public class InterfaceService {
 		real r2=new real(prono,detail,ansno,keyw,dif,chano,title,mpoint,type);
 		System.out.println(r2.toString());
 		dao2.updateinfo(r2);
-		response.sendRedirect("suc.jsp");
+		out.println("<script language='javascript'>alert('修改成功！')</script>");
 	}
 
 	public void insert(HttpServletRequest request, HttpServletResponse response)
@@ -65,17 +65,17 @@ public class InterfaceService {
 		String CHA_TITLE=request.getParameter("CHA_TITLE");//获取输入内容
 		String CHA_MPOINT=request.getParameter("CHA_MPOINT");//获取输入内容
 		String CHA_TYPE=request.getParameter("CHA_TYPE");
-		String lssb=request.getParameter("pro_state");
+		
 		//System.out.println(CHA_NO);
 		insertrealize finsert= new insertrealize();
 		
-		int judge=finsert.Insert(a, PRO_DETAIL, c, PRO_KEYW, z,f, CHA_TITLE, CHA_MPOINT, CHA_TYPE,lssb);
+		int judge=finsert.Insert(a, PRO_DETAIL, c, PRO_KEYW, z,f, CHA_TITLE, CHA_MPOINT, CHA_TYPE);
 		if(judge!=0) {
 			//response.sendRedirect("Finsert.jsp");
-			out.println("插入成功！");
+			out.println("<script language='javascript'>alert('插入成功！')</script>");
 		}
 		else {
-		     out.println("抱歉，你他妈插错了");
+			out.println("<script language='javascript'>alert('插入错误！')</script>");
 		}
 	}
 	public void delete(HttpServletRequest request, HttpServletResponse response)
@@ -88,10 +88,10 @@ public class InterfaceService {
 		int judge=fdelete.delete(a);
 		if(judge!=0) {
 			//response.sendRedirect("Fdelete.jsp");
-			out.println("删除成功！");
+			out.println("<script language='javascript'>alert('删除成功！')</script>");
 		}
 		else {
-			out.println("抱歉，查询不到所找的题号");
+			out.println("<script language='javascript'>alert('查找不到要删除的试题！')</script>");
 		}
 		
 		
