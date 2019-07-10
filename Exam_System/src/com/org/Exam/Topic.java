@@ -70,11 +70,10 @@ public class Topic extends HttpServlet {
 		String tst_name = request.getParameter("tst_name");
 		if (flag) {
 			out.println("<script language='javascript'>alert('" + tst_name
-					+ "已创建完成')</script>");
+					+ "已创建完成');window.location.href='ExamInfoWrite.html'</script>");
 		} else {
-			out.println("<script language='javascript'>alert('试题创建失败！')</script>");
+			out.println("<script language='javascript'>alert('试题创建失败！');window.location.href='ExamInfoWrite.html'</script>");
 		}
-
 	}
 
 	/*
