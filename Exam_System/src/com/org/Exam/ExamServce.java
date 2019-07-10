@@ -85,6 +85,7 @@ public class ExamServce {
 
 			Exam e = new Exam(tst_no, tst_name, tst_time, tst_type, tst_dif,
 					tst_num, tst_score);
+			System.out.println(e.toString());
 			String[] sList = new String[200];
 			int num = 0;
 
