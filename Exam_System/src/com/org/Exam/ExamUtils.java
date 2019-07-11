@@ -3,7 +3,7 @@ import java.sql.*;
 public class ExamUtils {
 	private static final String DB_URL = "jdbc:mysql://localhost:3306/exam?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
 	private static final String USER = "root";
-	private static final String PASS = "123";
+	private static final String PASS = "123456";
 
 	private ExamUtils() {
 	}
