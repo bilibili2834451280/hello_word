@@ -21,16 +21,14 @@ public class selectrealize implements ALLinterface{
 
 			// 2.连接数据库
 			conn = openandclose.getConnection();
-			// System.out.println("ok");
-			// 3. 操作数据库
-			String sql = "select  *   from  problem  where pro_no=?";
-			pstmt = conn.prepareStatement(sql);
 			
+			// 3. 操作数据库
+			String sql = "select problem.*,answer.ans_detail from answer,problem where problem.pro_no=answer.pro_no and problem.pro_no=?";
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,pro_no);
 			rs = pstmt.executeQuery();
-			
 			if (rs.next()) {
-				real INFO = new real(rs.getString("pro_no"),rs.getString("pro_detail"),rs.getString("pro_ansno"),rs.getString("pro_keyw"),rs.getString("pro_dif"),rs.getString("cha_no"),rs.getString("cha_title"),rs.getString("cha_mpoint"),rs.getString("pro_type"));
+				real INFO = new real(rs.getString("pro_no"),rs.getString("pro_detail"),rs.getString("pro_ansno"),rs.getString("pro_keyw"),rs.getString("pro_dif"),rs.getString("cha_no"),rs.getString("cha_title"),rs.getString("cha_mpoint"),rs.getString("pro_type"),rs.getString("ans_detail"));
 				return INFO;
 			}
 
@@ -79,15 +77,9 @@ public class selectrealize implements ALLinterface{
 	}
 
 	@Override
-	public void updateinfo(real INFO) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public int Insert(String pro_no, String pro_detail, String pro_ansno,
 			String pro_keyw, String pro_dif, String cha_no, String cha_title,
-			String cha_mpoString, String pro_type) {
+			String cha_mpoString, String pro_type,String ANS_NO,String ANS_DETAIL) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -96,6 +88,31 @@ public class selectrealize implements ALLinterface{
 	public int delete(String no) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public void dataBaseDump(String port, String username, String password,
+			String databasename, String sqlname) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void backup(String root, String pwd, String dbName, String filePath) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateinfo1(real INFO) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateinfo2(real INFO) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

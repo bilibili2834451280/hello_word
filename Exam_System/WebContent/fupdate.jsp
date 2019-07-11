@@ -47,30 +47,33 @@ background-attachment: fixed;" >
  <th width="1000px" height="500px" rowspan="13" colspan="13">
  	
  	<div class="divcss6" >更改信息如下：</div><br />
-	<div style="left: 580px; position: absolute; top: 250px; color: white;">  编号：   		</div> <input type="text" name="item_pro_no" value=${requestScope.info.pro_no }
-		                                                                                    style="left: 720px; position: absolute; top: 250px;"/><br />
-	<div style="left: 580px; position: absolute; top: 300px; color: white;"> 题目：               </div><input type="text" name="item_pro_detail" value=${requestScope.info.pro_detail }
-		                                                                                     style="left: 720px; position: absolute; top: 300px;"/></div><br />
-	<div style="left: 580px; position: absolute; top: 350px; color: white;"> 习题答案编号： </div> <input type="text" name="item_pro_ansno" value=${requestScope.info.pro_ansno }
-		                                                                                     style="left: 720px; position: absolute; top: 350px;"/></div><br />
-	<div style="left: 580px; position: absolute; top: 400px; color: white;"> 关键字： </div> <input type="text" name="pro_keyw" value=${requestScope.info.pro_keyw }
-		                                                                                     style="left: 720px; position: absolute; top: 400px;"/></div><br />
-	<div style="left: 580px; position: absolute; top: 450px; color: white;"> 难度系数：	</div><input type="text" name="pro_dif" value=${requestScope.info.pro_dif }
-		                                                                                     style="left: 720px; position: absolute; top: 450px;"/></div><br />
-	<div style="left: 580px; position: absolute; top: 500px; color: white;"> 所属章节编号：</div><input type="text" name="cha_no" value=${requestScope.info.cha_no }
-		                                                                                     style="left: 720px; position: absolute; top: 500px;"/></div><br />
-	<div style="left: 580px; position: absolute; top: 550px; color: white;"> 所属章节标题：	</div><input type="text" name="cha_title" value=${requestScope.info.cha_title }
-		                                                                                     style="left: 720px; position: absolute; top: 550px;"/></div><br />
-	<div style="left: 580px; position: absolute; top: 600px; color: white;"> 所属章节要点：</div>	<input type="text" name="cha_mpoint" value=${requestScope.info.cha_mpoint }
-		                                                                                     style="left: 720px; position: absolute; top: 600px;"/></div><br />
-	<div style="left: 580px; position: absolute; top: 650px; color: white;"> 习题类型：	</div><input type="text" name="pro_type" value=${requestScope.info.pro_type }
-		                                                                                     style="left: 720px; position: absolute; top:650px;"/></div><br />
-	
-						
-		      
-		<input class="button" type="submit" value="更新" onclick="document.form1.Submit();"
-		                          style="left: 720px; position: absolute; top: 690px;
-		                          height: 30px;width: 50px;"/>
+	<div style="left: 400px; position: absolute; top: 250px; color: white;">  编号：   		</div> <input type="text" name="pro_no" value=${requestScope.info.pro_no }
+		                                                                                    style="left: 540px; position: absolute; top: 250px;"/><br />
+	<div style="left: 400px; position: absolute; top: 300px; color: white;"> 题目：               </div><input type="text" name="pro_detail" value=${requestScope.info.pro_detail }
+		                                                                                     style="left: 540px; position: absolute; top: 300px;"/></div><br />
+	<div style="left: 400px; position: absolute; top: 450px; color: white;">  关键字：</div> <input type="text" name="pro_keyw" value=${requestScope.info.pro_keyw }
+		                                                                                  style="left: 540px; position: absolute; top: 450px;"/></div><br />
+	<div style="left: 400px; position: absolute; top: 400px; color: white;"> 难度系数：	</div><input type="text" name="pro_dif" value=${requestScope.info.pro_dif }
+		                                                                                     style="left: 540px; position: absolute; top: 400px;"/></div><br />
+	<div style="left: 800px; position: absolute; top: 250px; color: white;"> 所属章节编号：</div><input type="text" name="cha_no" value=${requestScope.info.cha_no }
+		                                                                                     style="left: 940px; position: absolute; top: 250px;"/></div><br />
+	<div style="left: 800px; position: absolute; top: 300px; color: white;"> 所属章节标题：	</div><input type="text" name="cha_title" value=${requestScope.info.cha_title }
+		                                                                                     style="left: 940px; position: absolute; top: 300px;"/></div><br />
+	<div style="left: 800px; position: absolute; top: 350px; color: white;"> 所属章节要点：</div>	<input type="text" name="cha_mpoint" value=${requestScope.info.cha_mpoint }
+		                                                                                     style="left: 940px; position: absolute; top: 350px;"/></div><br />
+	<div style="left: 800px; position: absolute; top: 400px; color: white;"> 答案编号：	</div><input type="text" name="pro_ansno" value=${requestScope.info.pro_ansno }
+		                                                                                     style="left: 940px; position: absolute; top: 400px;"/></div><br />
+	<div style="left: 400px; position: absolute; top: 350px; color: white;"> 答案：	</div><input type="text" name="ans_detail" value=${requestScope.info.ans_detail }
+		                                                                                     style="left: 540px; position: absolute; top: 350px;"/></div><br />		
+	<input class="button" type="submit" value="更改" onclick="document.form1.Submit();"
+		                          style="left: 720px; position: absolute; top: 550px;
+		                          height: 30px;width: 50px;"/>	                                                                                     
+		<div style="left: 800px; position: absolute; top: 450px; color: white;"> 习题类型： <select name="pro_type" style="left: 140px; position: absolute; top: 0px;width: 190px;">
+	                                                                                        <option value="blank">填空</option>
+                                                                                            <option value="choice">选择</option>
+                                                                                            <option value="judge">判断</option>
+                                                                                            <option value="short answer">简答</option>
+                                                                                     </select>	  
  </th>
 </tr>
 

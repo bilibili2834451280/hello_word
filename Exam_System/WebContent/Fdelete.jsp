@@ -45,7 +45,7 @@ background-attachment: fixed;" >
  	<div class="divcss6" >请输入你要删除的试题编号：</div><br />
  	</div> <input type="text" name="PRO_NO" 
 	style="left: 630px; position: absolute; top: 300px;
-	border:0px;background:rgba(0, 0, 0, 0.4);
+	border:0px;
 	height: 30px;width: 300px;"/><br />
 	
 	<input class="button" type="submit" value="删除" onclick="document.form1.Submit();"

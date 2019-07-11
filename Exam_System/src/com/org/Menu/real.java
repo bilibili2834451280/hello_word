@@ -10,6 +10,7 @@ public class real {
 	private  String  cha_title;
 	private  String  cha_mpoint;
 	private  String  pro_type;
+	private  String  ans_detail;
 
 	public real() {
 			super();
@@ -17,7 +18,7 @@ public class real {
 		}
 
 
-	public real(String pro_no, String pro_detail,String  pro_ansno,String  pro_keyw,String  pro_dif,String  cha_no,String  cha_title,String  cha_mpoint,String  pro_type) {
+	public real(String pro_no, String pro_detail,String  pro_ansno,String  pro_keyw,String  pro_dif,String  cha_no,String  cha_title,String  cha_mpoint,String  pro_type,String  ans_detail) {
 		super();
 		this.pro_no=pro_no;
 		this.pro_detail=pro_detail;
@@ -28,6 +29,7 @@ public class real {
 		this.cha_title=cha_title;
 		this.cha_mpoint=cha_mpoint;
 		this.pro_type=pro_type;
+		this.ans_detail=ans_detail;
 		
 	}
 
@@ -87,9 +89,15 @@ public class real {
 	public void setpro_type(String pro_type) {
 		this.pro_type = pro_type;
 	}
+	public String getans_detail() {
+		return ans_detail;
+	}
+	public void setans_detail(String ans_detail) {
+		this.ans_detail= ans_detail;
+	}
 	@Override
 	public String toString() {
-			return "info is [pro_no=" + pro_no + ", pro_detail=" + pro_detail + ",pro_ansno=" +pro_ansno+",pro_keyw="+pro_keyw+",pro_dif="+pro_dif+",cha_no="+cha_no+",cha_title="+cha_title+",cha_mpoint"+cha_mpoint+",pro_type="+pro_type+"]";
+			return "info is [pro_no=" + pro_no + ", pro_detail=" + pro_detail + ",pro_ansno=" +pro_ansno+",pro_keyw="+pro_keyw+",pro_dif="+pro_dif+",cha_no="+cha_no+",cha_title="+cha_title+",cha_mpoint="+cha_mpoint+",pro_type="+pro_type+",ans_detail="+ans_detail+"]";
 	}
 
 }
