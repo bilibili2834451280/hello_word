@@ -42,18 +42,7 @@ public class ExamServce {
 	public boolean createExam(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException,
 			SQLException {
-		String DB_URL = "jdbc:mysql://localhost:3306/exam?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
-		String USER = "root";
-		String PASS = "123";
-
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		Connection conn = null;
-		conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		Connection conn= ExamUtils.getConnection();
 		PreparedStatement stmt = null;
 
 		try {
