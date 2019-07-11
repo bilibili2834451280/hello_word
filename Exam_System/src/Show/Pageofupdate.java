@@ -44,6 +44,7 @@ public class Pageofupdate extends HttpServlet {
 		// TODO Auto-generated method stub
 		this.doGet(request, response);
 	}
+	//更改密码
 	public void uppassword(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		response.setContentType("text/html");
@@ -52,37 +53,37 @@ public class Pageofupdate extends HttpServlet {
 		String  no=request.getParameter("userno");//获取账号
 		String oldpwd=request.getParameter("oldpassword");//获取旧密码
 		String newpwd=request.getParameter("newpassword");//获取新密码
-		System.out.println(shengfen+no+oldpwd+newpwd);
+		//System.out.println(shengfen+no+oldpwd+newpwd);
 		Way w=new Solution();
-		if(shengfen.equals("student"))
+		if(shengfen.equals("student"))//学生
 		{
-			System.out.println("ok");
-			boolean updatetipe=w.updatestupwd(no, oldpwd, newpwd);
+			//System.out.println("ok");
+			boolean updatetipe=w.updatestupwd(no, oldpwd, newpwd);//判断旧密码是否正确
 			if(updatetipe)
 			{
-				w.updatestuwork(no,newpwd);
-				response.sendRedirect("showofupdatesuccess.html");
+				w.updatestuwork(no,newpwd);//更改密码
+				response.sendRedirect("showofupdatesuccess.html");//跳转更改成功界面
 				//request.getRequestDispatcher("showofupdatesuccess.html").forward(request, response);
 			}
 			else
 			{
 				
-				response.sendRedirect("showofupdatefalse.html");
+				response.sendRedirect("showofupdatefalse.html");//跳转信息错误界面
 				//request.getRequestDispatcher("showofupdatefalse.html").forward(request, response);
 			}
 		}
-		if(shengfen.equals("teacher"))
+		if(shengfen.equals("teacher"))//老师
 		{
-			boolean updatetipe=w.updateteapwd(no, oldpwd, newpwd);
+			boolean updatetipe=w.updateteapwd(no, oldpwd, newpwd);//判断旧密码是否正确
 			if(updatetipe)
 			{
 				w.updateteawork(no, newpwd);
-				response.sendRedirect("showofupdatesuccess.html");
+				response.sendRedirect("showofupdatesuccess.html");//跳转更改成功界面
 				//request.getRequestDispatcher("showofupdatesuccess.html").forward(request, response);
 			}
 			else
 			{
-				response.sendRedirect("showofupdatefalse.html");
+				response.sendRedirect("showofupdatefalse.html");//跳转信息错误界面
 				//request.getRequestDispatcher("showofupdatefalse.html").forward(request, response);
 			}
 		}

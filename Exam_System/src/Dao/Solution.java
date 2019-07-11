@@ -11,6 +11,7 @@ import Shixain.Teacher;
 import Connectpackage.*;
 
 public class Solution implements Way{
+	//登陆判断
 	public int login(String no,String password)
 	{
 		Connection  conn=null;
@@ -20,7 +21,8 @@ public class Solution implements Way{
 		ResultSet rs1 = null;
 		ResultSet rs2 = null;
 		ResultSet rs3 = null;
-				try {
+		//从三个数据库中寻找输入账号的身份		
+		try {
 			    conn=Connectionfactory.getConnection();	
 				String  sql1="select * from student where stu_no=? and stu_pwd=?";//从student表找密码序号
 				pstmt1=conn.prepareStatement(sql1);
@@ -39,15 +41,15 @@ public class Solution implements Way{
 				rs3=pstmt3.executeQuery();
 				if(rs1.next())
 				{
-					return  1;
+					return  1;//返回说明该账号是学生类型
 				}
 				if(rs2.next())
 				{
-					return 2;
+					return 2;//返回说明该账号是老师类型
 				}
 				if(rs3.next())
 				{
-					return 3;
+					return 3;//返回说明该账号是管理员类型
 				}
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
@@ -64,6 +66,7 @@ public class Solution implements Way{
 				}
 				return 0;
 	}
+	//学生注册
 	public void zhuceofStudent(Student s)
 	{
 		Connection  conn=null;
@@ -92,6 +95,7 @@ public class Solution implements Way{
 					Connectionfactory.closeConnection(conn);
 				}
 	}
+	//老师注册
 	public void zhuceofTeacher(Teacher t)
 	{
 		Connection  conn=null;
@@ -120,6 +124,7 @@ public class Solution implements Way{
 					Connectionfactory.closeConnection(conn);
 				}
 	}
+	//忘记密码学生信息判断，输入账号入库查询的姓名和输入姓名是否一致
 	public boolean massagestupipei(String n,String nn)
 	{
 		Connection  conn=null;
@@ -133,7 +138,7 @@ public class Solution implements Way{
 				pstmt.setString(1,n);
 				rs=pstmt.executeQuery();
 				if(rs.next()){
-				  if(rs.getString("stu_name")==nn)
+				  if(nn.equals(rs.getString("stu_name")))
 				  {
 					  return true;
 				  }
@@ -150,6 +155,7 @@ public class Solution implements Way{
 				}
 				return false;
 	}
+	//忘记密码老师信息判断，输入账号入库查询的姓名和输入姓名是否一致
 	public boolean massageteapipei(String n,String nn)
 	{
 		Connection  conn=null;
@@ -162,7 +168,7 @@ public class Solution implements Way{
 					pstmt.setString(1,n);
 					rs=pstmt.executeQuery();
 					if(rs.next()){
-						if(rs.getString("tea_name")==nn)
+						if(nn.equals(rs.getString("tea_name")))
 						  {
 							  return true;
 						  }
@@ -179,6 +185,7 @@ public class Solution implements Way{
 				}
 				return false;
 	}
+	//入库寻找学生密码并返回
 	public String findstupassword(String n)
 	{
 		Connection  conn=null;
@@ -207,6 +214,7 @@ public class Solution implements Way{
 				}
 				return newpass;
 	}
+	//入库寻找老师密码并返回
 	public String findteapassword(String n)
 	{
 		Connection  conn=null;
@@ -234,6 +242,7 @@ public class Solution implements Way{
 				}
 				return newpass;
 	}
+	//更改学生密码判断
 	public boolean updatestupwd(String n,String op,String np)
 	{
 		Connection  conn=null;
@@ -250,7 +259,8 @@ public class Solution implements Way{
 				rs1=pstmt1.executeQuery();
 				
 				if(rs1.next()){
-				if(op.equals(rs1.getString("stu_pwd"))){
+				if(op.equals(rs1.getString("stu_pwd")))//如果查出的密码和输入密码一样
+				{
 					/*String  sql2="update student set stu_pwd=? where stu_no=?";
 					pstmt2=conn.prepareStatement(sql2);
 					pstmt2.setString(1,np);
@@ -272,6 +282,7 @@ public class Solution implements Way{
 				}
 				return false;
 	}
+	//更改学生密码
 	public void updatestuwork(String n,String np)
 	{
 		Connection  conn=null;
@@ -282,7 +293,6 @@ public class Solution implements Way{
 					pstmt2=conn.prepareStatement(sql2);
 					pstmt2.setString(1,np);
 					pstmt2.setString(2,n);
-					System.out.println("pppp");
 					pstmt2.executeUpdate();
 					
 				
@@ -295,6 +305,7 @@ public class Solution implements Way{
 					Connectionfactory.closeConnection(conn);
 				}
 	}
+	//更改老师密码判定
 	public boolean updateteapwd(String n,String op,String np)
 	{
 		Connection  conn=null;
@@ -310,7 +321,8 @@ public class Solution implements Way{
 				pstmt1.setString(1,n);
 				rs1=pstmt1.executeQuery();
 				if(rs1.next()){
-				if(op.equals(rs1.getString("tea_pwd"))){
+				if(op.equals(rs1.getString("tea_pwd")))//如果查出的密码和输入密码一样
+				{
 					return true;
 				}
 				}
@@ -328,6 +340,7 @@ public class Solution implements Way{
 				}
 				return false;
 	}
+	//更改老师密码
 	public void updateteawork(String no,String np)
 	{
 		Connection  conn=null;
@@ -351,6 +364,34 @@ public class Solution implements Way{
 					Connectionfactory.closeConnection(conn);
 				}
 				
+	}
+	//检擦注册账号库中是否已存在
+	public boolean checkzhuce(String n)
+	{
+		Connection  conn=null;
+		PreparedStatement  pstmt=null;
+		ResultSet rs = null;
+				try {
+				
+				conn=Connectionfactory.getConnection();	
+				String  sql="select * from student where stu_no=?";
+				pstmt=conn.prepareStatement(sql);
+				pstmt.setString(1,n);
+				rs=pstmt.executeQuery();
+				if(rs.next()){
+				   return false;//存在返回false
+				}
+				
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}finally
+				{
+					Connectionfactory.closeStatement(pstmt);
+					Connectionfactory.closeConnection(conn);
+					Connectionfactory.closeResultSet(rs);
+				}
+				return true;
 	}
 
 }

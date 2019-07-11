@@ -16,6 +16,7 @@ import Dao.Way;
  * Servlet implementation class newpwd
  */
 @WebServlet("/fpass.html")
+
 public class newpwd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -46,6 +46,7 @@ public class Pageofzhuce extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+	//×¢²á
 	public void zhucexinxi(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		response.setContentType("text/html");
@@ -57,8 +58,16 @@ public class Pageofzhuce extends HttpServlet {
 		String grade=request.getParameter("grade");
 		Student s=new Student(no,password,name,discipline,grade);
 		Way w=new Solution();
-		w.zhuceofStudent(s);
-		out.println("×¢²á³É¹¦");
+		if(w.checkzhuce(no))
+		{
+			w.zhuceofStudent(s);//×¢²á
+			response.sendRedirect("showzhuce.html");//ÌøÈëÏÔÊ¾×¢²áÒ³Ãæ
+		}
+		else
+		{
+			response.sendRedirect("showfalsezhuce.html");//ÌøÈë×¢²á´íÎóµ¯´°
+		}
+		
 
 		
 	}
