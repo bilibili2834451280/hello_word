@@ -28,7 +28,7 @@ public class InterfaceService {
 		else
 		{
 			out.println("<script language='javascript'>alert('查询不到该试题！')</script>");
-			response.sendRedirect("showofteacher.html");
+			response.sendRedirect("showofteacher.jsp");
 		}
 	}
 	
@@ -53,7 +53,7 @@ public class InterfaceService {
 		dao2.updateinfo1(r2);
 		dao2.updateinfo2(r2);
 		out.println("<script language='javascript'>alert('修改成功！')</script>");
-		response.sendRedirect("showofteacher.html");
+		response.sendRedirect("showofteacher.jsp");
 	}
 
 	public void insert(HttpServletRequest request, HttpServletResponse response)
@@ -79,11 +79,11 @@ public class InterfaceService {
 		if(judge!=0) {
 			//response.sendRedirect("Finsert.jsp");
 			out.println("<script language='javascript'>alert('插入成功！')</script>");
-			response.sendRedirect("showofteacher.html");
+			response.sendRedirect("showofteacher.jsp");
 		}
 		else {
 			out.println("<script language='javascript'>alert('插入错误！')</script>");
-			response.sendRedirect("showofteacher.html");
+			response.sendRedirect("showofteacher.jsp");
 		}
 	}
 	public void delete(HttpServletRequest request, HttpServletResponse response)
@@ -97,11 +97,11 @@ public class InterfaceService {
 		if(judge!=0) {
 			//response.sendRedirect("Fdelete.jsp");
 			out.println("<script language='javascript'>alert('删除成功！')</script>");
-			response.sendRedirect("showofteacher.html");
+			response.sendRedirect("showofteacher.jsp");
 		}
 		else {
 			out.println("<script language='javascript'>alert('查找不到要删除的试题！')</script>");
-			response.sendRedirect("showofteacher.html");
+			response.sendRedirect("showofteacher.jsp");
 		}
 		
 		

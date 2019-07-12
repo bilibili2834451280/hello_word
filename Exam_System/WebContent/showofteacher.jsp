@@ -1,7 +1,9 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>试题库管理系统</title>
 <style>
 	.divcss6{color:white; font-size:30px;text-align:center; left: 600px; position: absolute; top: 200px;}
@@ -18,9 +20,6 @@
 <body background="images/p4.jpg" style=" background-repeat:no-repeat ;
 background-size:100% 100%;
 background-attachment: fixed;" >
-<script>
-alert('备份成功！');
-</script>
 <!-- <form action="fdb.html"  method="post">-->
 <br/><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font  size="6" face="方正粗黑宋简体" color=white>欢迎进入管理员试题库管理系统</font>
@@ -39,12 +38,7 @@ alert('备份成功！');
  <br />
  <a href=Fdelete.jsp style="color:white; text-decoration: none;">删除试题</a><br/>
  <br/>
- <a href="fdb.html" style="color:white; text-decoration: none;">数据库备份</a><br/>
- <br/>
- <a href="fdbd.html" style="color:white; text-decoration: none;">数据库恢复</a>
- <!--  <input class="button" type="button" value="数据库更新" onclick="document.form1.Submit();"
-		                          style="font-size:19px; color: white; left: 90px; position: absolute; top: 520px;
-		                          height: 30px;width: 100px;"/>-->
+  <a href=Fdelete.jsp style="color:white; text-decoration: none;">生成试卷</a>
  </th>
  <th width="1000px" height="500px" rowspan="13" colspan="13"></th>
 </tr>
