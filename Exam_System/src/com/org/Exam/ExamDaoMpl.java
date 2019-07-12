@@ -188,6 +188,77 @@ public class ExamDaoMpl implements ExamDao{
 			ee.printStackTrace();
 		}
 		return tmp;
+	}
+	@Override
+	public List<String> getExamtst_no(){
+		Connection conn = ExamUtils.getConnection();
+		PreparedStatement stmt = null;
+		List<String> tmp =new ArrayList<String>();
+		try {
+			String sql = null;
+			sql = "select tst_no from test";
+			stmt=conn.prepareStatement(sql);
+			ResultSet rs2 = stmt.executeQuery();
+			while(rs2.next()) {
+				tmp.add(rs2.getString("tst_no"));
+			}
+			ExamUtils.closeStatement(stmt);
+			ExamUtils.closeConnection(conn);
+		} catch (Exception ee) {
+			ee.printStackTrace();
+		}
+		return tmp;
+	}
+	@Override
+	public List<String> getExamname_tst_no(){
+		Connection conn = ExamUtils.getConnection();
+		PreparedStatement stmt = null;
+		List<String> tmp =new ArrayList<String>();
+		try {
+			String sql = null;
+			sql = "select tst_name tst_no from test";
+			stmt=conn.prepareStatement(sql);
+			ResultSet rs2 = stmt.executeQuery();
+			while(rs2.next()) {
+				tmp.add(rs2.getString("tst_name"));
+				tmp.add(rs2.getString("tst_no"));
+			}
+			ExamUtils.closeStatement(stmt);
+			ExamUtils.closeConnection(conn);
+		} catch (Exception ee) {
+			ee.printStackTrace();
+		}
+		return tmp;
+	}
+
+	@Override
+	public List<String> getExampro_Choice(String tst_no){
+		Connection conn = ExamUtils.getConnection();
+		PreparedStatement stmt = null;
+		List<String> tmp =new ArrayList<String>();
 		
+		try {
+			String sql = null;
+			sql = "select pro_detail pro_no from problem where pro_type='choice' and pro_no in ("
+					+ "select pro_no from testpro where tst_no='"+tst_no+"')";
+			
+			stmt=conn.prepareStatement(sql);
+			ResultSet rs2 = stmt.executeQuery();
+			while(rs2.next()) {
+				String[] sp=rs2.getString("pro_detail").split("\\;");
+				tmp.add(sp[0]);
+				tmp.add(sp[1]);
+				tmp.add(sp[2]);
+				tmp.add(sp[3]);
+				tmp.add(sp[4]);
+				tmp.add(rs2.getString("pro_no"));
+			}
+			
+			ExamUtils.closeStatement(stmt);
+			ExamUtils.closeConnection(conn);
+		} catch (Exception ee) {
+			ee.printStackTrace();
+		}
+		return tmp;
 	}
 }

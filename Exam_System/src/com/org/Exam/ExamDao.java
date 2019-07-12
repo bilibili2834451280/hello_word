@@ -9,4 +9,9 @@ public interface ExamDao {
 	Exam getExamByNo(String no1);
 	int getExamnum();
 	List<String> getExamname();
+	List<String> getExamtst_no();
+	List<String> getExamname_tst_no();
+	
+
+	List<String> getExampro_Choice(String tst_no);
 }
