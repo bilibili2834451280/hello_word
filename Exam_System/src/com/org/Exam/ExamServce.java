@@ -47,8 +47,6 @@ public class ExamServce {
 
 		try {
 			String sql = null;
-			sql = "select * from problem where cha_no= ? and cha_mpoint= ? and ? and pro_type= ? order by rand() limit ?";
-			stmt = conn.prepareStatement(sql);
 
 			String tst_no = request.getParameter("tst_no");
 			String tst_name = request.getParameter("tst_name");
@@ -71,18 +69,16 @@ public class ExamServce {
 				String minn = Integer.parseInt(difList[0]) < Integer
 						.parseInt(difList[1]) ? difList[0] : difList[1];
 				System.out.println("max=" + maxn + " min=" + minn);
-				sql = "select * from problem where cha_no= ? and cha_mpoint= ? and pro_dif between ? and ? and pro_type= ? order by rand() limit ?";
+				sql = "select * from problem where cha_no= ? and cha_mpoint= ? and pro_dif between ? and ? order by rand() limit ?";
 				stmt = conn.prepareStatement(sql);
 				stmt.setString(3, minn);
 				stmt.setString(4, maxn);
-				stmt.setString(5, tst_type);
-				stmt.setInt(6, Integer.parseInt(tst_num));
+				stmt.setInt(5, Integer.parseInt(tst_num));
 			} else {
-				sql = "select * from problem where cha_no= ? and cha_mpoint= ? and pro_dif ? and pro_type= ? order by rand() limit ?";
+				sql = "select * from problem where cha_no= ? and cha_mpoint= ? and pro_dif ? order by rand() limit ?";
 				stmt = conn.prepareStatement(sql);
 				stmt.setString(3, tst_dif);
-				stmt.setString(4, tst_type);
-				stmt.setInt(5, Integer.parseInt(tst_num));
+				stmt.setInt(4, Integer.parseInt(tst_num));
 			}
 
 			stmt.setString(1, cha_no);
