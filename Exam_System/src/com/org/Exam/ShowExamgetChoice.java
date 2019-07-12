@@ -34,18 +34,30 @@ public class ShowExamgetChoice extends HttpServlet {
 		List<String> Choicetmp=impl.getExampro_Choice(request.getParameter("tst_no"));
 		String ans=new String();
 		for(int i=0;i<Choicetmp.size();i+=6) {
+
+			
+			
+			
+			
+			
 			ans+="<div class='layui-colla-item'>";
-			ans+="<h2 class=\"layui-colla-title\">"+Choicetmp.get(i+5)+"</h2>";
-			ans+="<div class=\"layui-colla-content layui-show\">";
-			ans+="<blockquote class=\"layui-elem-quote\">";
+			ans+="<h2 class='layui-colla-title'>"+Choicetmp.get(i+5)+"</h2>";
+			ans+="<div class='layui-colla-content layui-show'>";
+			ans+="<blockquote class='layui-elem-quote'>";
 			ans+=Choicetmp.get(i);
 			ans+="</blockquote>";
-			ans+="<div class=\"layui-form-item\">";
-			ans+="<div class=\"layui-input-block\">";
-			ans+="<input type='radio' name='"+Choicetmp.get(i+5)+"' value='"+Choicetmp.get(i+1)+"' title='"+Choicetmp.get(i+1)+"'checked=''>";
-			ans+="<input type='radio' name='"+Choicetmp.get(i+5)+"' value='"+Choicetmp.get(i+2)+"' title='"+Choicetmp.get(i+2)+"'>";
-			ans+="<input type='radio' name='"+Choicetmp.get(i+5)+"' value='"+Choicetmp.get(i+3)+"' title='"+Choicetmp.get(i+3)+"'>";
-			ans+="<input type='radio' name='"+Choicetmp.get(i+5)+"' value='"+Choicetmp.get(i+4)+"' title='"+Choicetmp.get(i+4)+"'>";
+			ans+="<div class='layui-form-item'>";
+			ans+="<div class='layui-input-block'>";
+			ans+="<input type='radio' name='"+Choicetmp.get(i+5)+"' value='"+Choicetmp.get(i+1)+"' title='"+Choicetmp.get(i+1)+"' checked=''>";
+			ans+="<input type='radio' name='"+Choicetmp.get(i+5)+"' value='"+Choicetmp.get(i+2)+"' title='"+Choicetmp.get(i+2)+"' checked=''>";
+			ans+="<input type='radio' name='"+Choicetmp.get(i+5)+"' value='"+Choicetmp.get(i+3)+"' title='"+Choicetmp.get(i+3)+"' checked=''>";
+			ans+="<input type='radio' name='"+Choicetmp.get(i+5)+"' value='"+Choicetmp.get(i+4)+"' title='"+Choicetmp.get(i+4)+"' checked=''>";
+			ans+="</div></div></div></div>";
+			
+			System.out.println(Choicetmp.get(i+1));
+			System.out.println(Choicetmp.get(i+2));
+			System.out.println(Choicetmp.get(i+3));
+			System.out.println(Choicetmp.get(i+4));
 		}
 		response.getWriter().write(ans);
 	}

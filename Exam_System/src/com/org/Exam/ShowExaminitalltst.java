@@ -43,7 +43,7 @@ public class ShowExaminitalltst extends HttpServlet {
 
 		
 		for (int i = 0; i < tst_name_no.size(); i+=2) {
-			ans += "<dd><a href='javascript:refresh1(" + tst_name_no.get(i+1) + ");'><%=" + tst_name_no.get(i) + "%></a></dd>";
+			ans += "<dd><a href='javascript:refresh1(" + tst_name_no.get(i+1) + ");'>" + tst_name_no.get(i) + "</a></dd>";
 		}
 		
 		if(ans.length()<=0) {

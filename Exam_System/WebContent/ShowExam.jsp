@@ -96,20 +96,21 @@ import="java.util.List" %>
 					<legend>选择题</legend>
 				</fieldset>
 				
+
 				<div class="layui-collapse" lay-accordion="" id="Choice_question">
 
-						<div class="layui-colla-item">
-							<h2 class="layui-colla-title">题名</h2>
-							<div class="layui-colla-content layui-show">
-								<blockquote class="layui-elem-quote">
+						<div class='layui-colla-item'>
+							<h2 class='layui-colla-title'>题名</h2>
+							<div class='layui-colla-content layui-show'>
+								<blockquote class='layui-elem-quote'>
 									中国共产党第十九次全国代表大会，是在全面建成小康社会决胜阶段、中国特色社会主义进入_____的关键时期召开的一次十分重要的大会。
 								</blockquote>
-								<div class="layui-form-item">
-									<div class="layui-input-block">
-										<input type="radio" name="sex" value="新时期" title="新时期"checked=""> 
-										<input type="radio" name="sex" value="新阶段" title="新阶段"> 
-										<input type="radio" name="sex" value="新征程" title="新征程"> 
-										<input type="radio" name="sex" value="新时代" title="新时代">
+								<div class='layui-form-item'>
+									<div class='layui-input-block'>
+										<input type='radio' name='sex' value='新时期' title='新时期' checked=''> 
+										<input type='radio' name='sex' value='新阶段' title='新阶段'> 
+										<input type='radio' name='sex' value='新征程' title='新征程'> 
+										<input type='radio' name='sex' value='新时代' title='新时代'>
 									</div>
 								</div>
 							</div>
@@ -140,6 +141,7 @@ import="java.util.List" %>
 						</div>
 					</div>
 				</div>
+				
 				<fieldset class="layui-elem-field layui-field-title"
 					style="margin-top: 30px;">
 					<legend>简答题</legend>
@@ -230,21 +232,21 @@ layui.use(['form', 'layedit', 'laydate'], function(){
 <script>
 function refresh1(x) {
 	$("#Choice_question").empty();
-	var xmlhttptmp2;
+	var xmlhttptmp3;
 	if (window.XMLHttpRequest) {
 	//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
-		xmlhttptmp2 = new XMLHttpRequest();
+		xmlhttptmp3 = new XMLHttpRequest();
 	} else {
 		// IE6, IE5 浏览器执行代码
-		xmlhttptmp2 = new ActiveXObject("Microsoft.XMLHTTP");
+		xmlhttptmp3 = new ActiveXObject("Microsoft.XMLHTTP");
 	}
-		xmlhttptmp2.onreadystatechange = function() {
-			if (xmlhttptmp2.readyState == 4 && xmlhttptmp2.status == 200) {
-			$("#Choice_question").append(xmlhttptmp2.responseText);
+		xmlhttptmp3.onreadystatechange = function() {
+			if (xmlhttptmp3.readyState == 4 && xmlhttptmp3.status == 200) {
+			$("#Choice_question").append(xmlhttptmp3.responseText);
 			}
 		}
-	xmlhttptmp2.open("GET", "./ShowExamgetChoice?tst_no="+x, true);
-	xmlhttptmp2.send();
+	xmlhttptmp3.open("GET", "./ShowExamgetChoice?tst_no="+x, true);
+	xmlhttptmp3.send();
     return;
 } 
 

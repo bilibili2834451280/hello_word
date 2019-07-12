@@ -14,7 +14,11 @@ import="java.util.List" %>
   <link rel="stylesheet" href="./layui-v2.5.4/layui/css/layui.css"  media="all">
 </head>
 <body>
+
+
+
 <div id="myDiv"><h2>使用 AJAX 修改该文本内容</h2></div>
+
 <button type="button" onclick="loadXMLDoc()">修改内容</button>
 
 	      

@@ -216,7 +216,7 @@ public class ExamDaoMpl implements ExamDao{
 		List<String> tmp =new ArrayList<String>();
 		try {
 			String sql = null;
-			sql = "select tst_name tst_no from test";
+			sql = "select * from test";
 			stmt=conn.prepareStatement(sql);
 			ResultSet rs2 = stmt.executeQuery();
 			while(rs2.next()) {
@@ -239,7 +239,7 @@ public class ExamDaoMpl implements ExamDao{
 		
 		try {
 			String sql = null;
-			sql = "select pro_detail pro_no from problem where pro_type='choice' and pro_no in ("
+			sql = "select pro_detail,pro_no from problem where pro_type='choice' and pro_no in ("
 					+ "select pro_no from testpro where tst_no='"+tst_no+"')";
 			
 			stmt=conn.prepareStatement(sql);
