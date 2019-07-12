@@ -29,9 +29,23 @@ public class deleterealize implements ALLinterface{
 	public int  delete(String no) {
       Connection conn = getConn();
       	int i= 0;
-       String sql = "delete from problem where pro_no='" + no + "'";
-	    	    PreparedStatement pstmt;
+      
+	    	    PreparedStatement pstmt=null;
 	    	    try {
+	    	    	String sql = "delete from problem where pro_no='" + no + "'";
+	    	        pstmt = (PreparedStatement) conn.prepareStatement(sql);
+	    	        i= pstmt.executeUpdate();
+	    	        pstmt.close();
+	    	     
+	    	    } catch (SQLException e) {
+	    	        e.printStackTrace();
+	    	    }
+	    	    if(i==0)
+	    	    {
+	    	    	return i;
+	    	    }
+	    	    try {
+	    	    	String sql = "delete from answer where pro_no='" + no + "'";
 	    	        pstmt = (PreparedStatement) conn.prepareStatement(sql);
 	    	        i= pstmt.executeUpdate();
 	    	        pstmt.close();
@@ -48,11 +62,6 @@ public class deleterealize implements ALLinterface{
 		return null;
 	}
 	@Override
-	public void updateinfo(real INFO) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
 	public boolean check(String no) {
 		// TODO Auto-generated method stub
 		return false;
@@ -60,8 +69,29 @@ public class deleterealize implements ALLinterface{
 	@Override
 	public int Insert(String pro_no, String pro_detail, String pro_ansno,
 			String pro_keyw, String pro_dif, String cha_no, String cha_title,
-			String cha_mpoString, String pro_type) {
+			String cha_mpoString, String pro_type,String ANS_NO,String ANS_DETAIL) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	@Override
+	public void dataBaseDump(String port, String username, String password,
+			String databasename, String sqlname) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void backup(String root, String pwd, String dbName, String filePath) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void updateinfo1(real INFO) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void updateinfo2(real INFO) {
+		// TODO Auto-generated method stub
+		
 	}
 }

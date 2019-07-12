@@ -27,7 +27,7 @@ public class insertrealize implements ALLinterface{
 	    return conn;
 	}
 	public int Insert(String a,String PRO_DETAIL,String c,String PRO_KEYW,String z,
-			String f,String CHA_TITLE,String CHA_MPOINT,String CHA_TYPE){
+			String f,String CHA_TITLE,String CHA_MPOINT,String CHA_TYPE,String ANS_NO,String ANS_DETAIL){
 	       Connection conn = getConn();
 		   int i = 0;
 		    
@@ -44,8 +44,24 @@ public class insertrealize implements ALLinterface{
 		        pstmt.setString(7,CHA_TITLE );
 		        pstmt.setString(8,CHA_MPOINT );
 		        pstmt.setString(9,CHA_TYPE );
-		        
+		       // pstmt.setString(10,lssb );
 		        System.out.println("fhznb");
+		        i=pstmt.executeUpdate();
+		        pstmt.close();
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    }
+		    if(i==0)
+		    {
+		    	return i;
+		    }
+		    try {
+		    	String sql = "insert into answer values(?,?,?)";
+		        pstmt = (PreparedStatement) conn.prepareStatement(sql);
+		        pstmt.setString(1, ANS_NO);
+		        pstmt.setString(2,ANS_DETAIL );
+		        pstmt.setString(3, a);		     
+		        System.out.println("fhzwow");
 		        i=pstmt.executeUpdate();
 		        pstmt.close();
 		    } catch (SQLException e) {
@@ -59,11 +75,6 @@ public class insertrealize implements ALLinterface{
 		return null;
 	}
 	@Override
-	public void updateinfo(real INFO) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
 	public boolean check(String no) {
 		// TODO Auto-generated method stub
 		return false;
@@ -73,7 +84,28 @@ public class insertrealize implements ALLinterface{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
+	@Override
+	public void dataBaseDump(String port, String username, String password,
+			String databasename, String sqlname) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void backup(String root, String pwd, String dbName, String filePath) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void updateinfo1(real INFO) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void updateinfo2(real INFO) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 	
 	
