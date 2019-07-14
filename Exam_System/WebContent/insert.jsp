@@ -24,25 +24,27 @@
 <body background="images/p4.jpg" style=" background-repeat:no-repeat ;
 background-size:100% 100%;
 background-attachment: fixed;" >
-<form action="fInsert"  method="post">
+<form action="sert"  method="post">
 <br/><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font  size="6" face="方正粗黑宋简体" color=white>欢迎进入教师试题库管理系统</font>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font  size="6" face="方正粗黑宋简体" color=white>欢迎进入管理员试题库管理系统</font>
 <br/><br/>
 <table align="center" width="1500" height="600" border="2" bordercolor:rgba(0,0,0,0.9)>
 <tr bgcolor:rgba(0,0,0,0.9)>
- <th width="200px" height="50px"><font  size="4" face="方正粗黑宋简体" color=white>教师功能</th>
+ <th width="200px" height="50px"><font  size="4" face="方正粗黑宋简体" color=white>管理员功能</th>
  <th width="1000px" height="50px">&nbsp;</th>
  
 </tr>
 <tr bgcolor:rgba(0,0,0,0.9)>
 <th width="200px" height="500px" rowspan="13" colspan="1">
- 	 <a href=Finsert.jsp style="color:white; text-decoration: none;">新添试题</a><br/>
+ 	 <a href=insert.jsp style="color:white; text-decoration: none;">新添试题</a><br/>
  <br />
- <a href=Fselect.html style="color:white; text-decoration: none;">查找试题</a><br/>
+ <a href=select.html style="color:white; text-decoration: none;">查找试题</a><br/>
  <br />
- <a href=Fdelete.jsp style="color:white; text-decoration: none;">删除试题</a><br/>
+ <a href=delete.jsp style="color:white; text-decoration: none;">删除试题</a><br/>
  <br/>
-  <a href=Fdelete.jsp style="color:white; text-decoration: none;">生成试卷</a>
+ <a href="fdb.html" style="color:white; text-decoration: none;">数据库备份</a><br/>
+ <br/>
+  <a href="fdbd.html" style="color:white; text-decoration: none;">数据库恢复</a>
  </th>
  <th width="1000px" height="500px" rowspan="13" colspan="13">
  	
@@ -76,7 +78,7 @@ background-attachment: fixed;" >
 	                                                                                        <option value="blank">填空</option>
                                                                                             <option value="choice">选择</option>
                                                                                             <option value="judge">判断</option>
-                                                                                            <option value="short_answer">简答</option>
+                                                                                            <option value="short answer">简答</option>
                                                                                      </select>	      	                                                                                     			
 	
                                                                                                                                                                      

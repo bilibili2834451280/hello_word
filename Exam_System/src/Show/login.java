@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Dao.*;
 
@@ -63,26 +64,47 @@ public class login extends HttpServlet {
 			//out.println("s");
 			//System.out.println("s");
 			//response.setCharacterEncoding("UTF-8");
-			request.setAttribute("stuno", no);//保存学生学号
-			response.setContentType("text/html;charset=utf-8");
-			request.setCharacterEncoding("UTF-8");
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("stuno", no);
+			String url ="showofstudent.jsp;jsessionid="+session.getId();
+			url = response.encodeURL(url);
+			request.getRequestDispatcher(url).forward(request, response);
+			
+			//request.setAttribute("stuno", no);//保存学生学号
+			//response.setContentType("text/html;charset=utf-8");
+			//request.setCharacterEncoding("UTF-8");
 			//request.getRequestDispatcher("showofstudent.html").forward(request, response);
-		    response.sendRedirect("showofstudent.html");
+		    //response.sendRedirect("showofstudent.jsp");
 		
 		}
 		if(passtipe==2)//跳转老师页面
 		{
 			//out.println("t");
 			//System.out.println("t");
-			request.setAttribute("teano", no);//保存老师学号
-			response.sendRedirect("showofteacher.html");
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("teano", no);
+			String url ="showofteacher.jsp;jsessionid="+session.getId();
+			url = response.encodeURL(url);
+			request.getRequestDispatcher(url).forward(request, response);
+			
+			/*request.setAttribute("teano", no);//保存老师学号
+			response.sendRedirect("showofteacher.jsp");*/
 		}
 		if(passtipe==3)//跳转管理员界面
 		{
 			//out.println("m");
 			//System.out.println("m");
-			request.setAttribute("manano", no);//保存管理员学号
-			response.sendRedirect("showofmanager.html");
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("manano", no);
+			String url ="showofmanager.jsp;jsessionid="+session.getId();
+			url = response.encodeURL(url);
+			request.getRequestDispatcher(url).forward(request, response);
+			
+			//request.setAttribute("manano", no);//保存管理员学号
+			//response.sendRedirect("showofmanager.jsp");
 		}
 		//request.setAttribute("rightStu", w.getmassage(name));
 		
