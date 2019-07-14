@@ -269,7 +269,7 @@ public class ExamDaoMpl implements ExamDao{
 		List<String> tmp =new ArrayList<String>();
 		try {
 			String sql = null;
-			sql = "select pro_detail,pro_no from problem where pro_type='short_answer' and pro_no in ("
+			sql = "select pro_detail,pro_no from problem where pro_type in ('blank','short_answer') and pro_no in ("
 					+ "select pro_no from testpro where tst_no='"+tst_no+"')";
 			
 			stmt=conn.prepareStatement(sql);
@@ -295,9 +295,9 @@ public class ExamDaoMpl implements ExamDao{
 		List<Answer_table> tmp =new ArrayList<Answer_table>();
 		try {
 			String sql = null;
-			sql = "select ans_no,ans_detail,problem.pro_no,pro_dif,cha_no,cha_title,cha_mpoint" + 
-					"FROM problem" + 
-					"INNER JOIN answer" + 
+			sql = "select ans_no,ans_detail,problem.pro_no,pro_dif,cha_no,cha_title,cha_mpoint " + 
+					"FROM problem " + 
+					"INNER JOIN answer " + 
 					"ON problem.pro_no=answer.pro_no and problem.pro_no in (select pro_no from testpro where tst_no='"+tst_no+"')";
 			
 			
@@ -310,12 +310,15 @@ public class ExamDaoMpl implements ExamDao{
 				trs[1] = rs1.getString("ans_detail");
 				trs[2] = rs1.getString("pro_no");
 				
-				trs[3] = rs1.getString("cha_no");
-				trs[4] = rs1.getString("cha_title");
-				trs[5] = rs1.getString("cha_mpiont");
-				trs[6] = rs1.getString("pro_type");
+				trs[3] = rs1.getString("pro_dif");
+				trs[4] = rs1.getString("cha_no");
+				trs[5] = rs1.getString("cha_title");
+				trs[6] = rs1.getString("cha_mpoint");
+				
 				tmp.add(new Answer_table(trs));
 			}
+			
+			
 			
 			ExamUtils.closeStatement(stmt);
 			ExamUtils.closeConnection(conn);

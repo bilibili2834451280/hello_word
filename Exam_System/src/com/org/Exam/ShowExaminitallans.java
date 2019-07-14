@@ -43,7 +43,7 @@ public class ShowExaminitallans extends HttpServlet {
 
 		
 		for (int i = 0; i < tst_name_no.size(); i+=2) {
-			ans += "<dd><a href='javascript:refresh2(\"" + tst_name_no.get(i+1) + "\");'>" + tst_name_no.get(i) + "的答案</a></dd>";
+			ans += "<dd><a href='javascript:refresh2(" + tst_name_no.get(i+1) + ");'>" + tst_name_no.get(i) + "的答案</a></dd>";
 		}
 		
 		if(ans.length()<=0) {

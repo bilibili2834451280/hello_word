@@ -24,7 +24,7 @@ import="java.util.List" %>
       <li class="layui-nav-item">
         <a href="javascript:;">
           <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-          贤心
+          <%= (String)session.getAttribute("stuno") %>
         </a>
         <dl class="layui-nav-child">
           <dd><a href="">基本资料</a></dd>
@@ -123,11 +123,15 @@ import="java.util.List" %>
 		</form>
 	</div>
   </div>
+  
   <script>$("#tstbody").hide();</script>
+  
   <div class="layui-body" id="ansbody">
     <!-- 内容主体区域 -->
     	<div style="padding: 15px;">
-    		<table class="layui-hide" id="ans_table"></table>
+    	
+    		<table id="ans_table" lay-filter="clublist"></table>
+    		
   		</div>
   </div>
   <script>$("#ansbody").hide();</script>
@@ -179,9 +183,6 @@ layui.use(['form', 'layedit', 'laydate'], function(){
 	    })
 	    return false;
 	  });
-	  element.on('collapse(collapsetttst)', function(data){
-		    layer.msg('展开状态：'+ data.show);
-		  });
 	});
 </script>
 <script>
@@ -234,21 +235,28 @@ function refresh1(x) {
 
 function refresh2(x) {
 	$("#tstbody").hide();
-	
-	table.render({
+
+	layui.use('table', function () {
+	    var table = layui.table;
+	    var tableIns =table.render({
 	    elem: '#ans_table'
-	    ,url:"/ExamShowans_table?tst_no="+x
+	    ,url:'./ExamShowans_table?tst_no='+x
 	    ,cellMinWidth: 80 
+	    ,page: true
 	    ,cols: [[
-	      {field:'pro_no', width:80, title: '题目编号', sort: true}
-	      ,{field:'cha_no', width:80, title: '章节编号'}
-	      ,{field:'cha_title', width:80, title: '章节标题', sort: true}
-	      ,{field:'cha_mpiont', width:80, title: '章节要点'}
-	      ,{field:'ans_detail', title: '答案', width: '30%', minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+	      {field:'pro_no', width:100, title: '题目编号', sort: true}
+	      ,{field:'cha_no', width:100, title: '章节编号'}
+	      ,{field:'cha_title', width:100, title: '章节标题', sort: true}
+	      ,{field:'cha_mpiont', width:100, title: '章节要点'}
+	      ,{field:'ans_detail', title: '答案', width: '25%', minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
 	      ,{field:'pro_dif', title: '难度', sort: true}
 	      ,{field:'ans_no', title: '答案编号', sort: true}
 	    ]]
 	  });
+	});
+	
+	
+	
 	$("#ansbody").show();
     return;
 }
