@@ -22,11 +22,11 @@ background-size:100% 100%;
 background-attachment: fixed;" >
 <!-- <form action="fdb.html"  method="post">-->
 <br/><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font  size="6" face="方正粗黑宋简体" color=white>欢迎进入管理员试题库管理系统</font>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font  size="6" face="方正粗黑宋简体" color=white>欢迎进入老师试题库管理系统</font>
 <br/><br/>
 <table align="center" width="1500" height="600" border="2" bordercolor:rgba(0,0,0,0.9)>
 <tr bgcolor:rgba(0,0,0,0.9)>
- <th width="200px" height="50px"><font  size="4" face="方正粗黑宋简体" color=white>管理员功能</th>
+ <th width="200px" height="50px"><font  size="4" face="方正粗黑宋简体" color=white>老师功能</th>
  <th width="1000px" height="50px">&nbsp;</th>
  
 </tr>

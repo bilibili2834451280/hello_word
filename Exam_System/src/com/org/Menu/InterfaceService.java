@@ -70,7 +70,7 @@ public class InterfaceService {
 		String CHA_TITLE=request.getParameter("CHA_TITLE");//获取输入内容
 		String CHA_MPOINT=request.getParameter("CHA_MPOINT");//获取输入内容
 		String CHA_TYPE=request.getParameter("CHA_TYPE");
-		String ANS_NO=request.getParameter("ANS_NO");
+		String ANS_NO="a";
 		String ANS_DETAIL=request.getParameter("ANS_DETAIL");
 		//System.out.println(CHA_NO);
 		insertrealize finsert= new insertrealize();

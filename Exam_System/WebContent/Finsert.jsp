@@ -65,10 +65,10 @@ background-attachment: fixed;" >
 		                                                                                     style="left: 940px; position: absolute; top: 350px;"/></div><br />
 	<!--  <div style="left: 800px; position: absolute; top: 450px; color: white;"> 习题类型：	</div><input type="text" name="CHA_TYPE"
 		                                                                                     style="left: 940px; position: absolute; top:400px;"/></div><br />-->
-	<div style="left: 800px; position: absolute; top: 400px; color: white;"> 答案编号：	</div><input type="text" name="ANS_NO"
+	<div style="left: 800px; position: absolute; top: 400px; color: white;"> 答案：	</div><input type="text" name="ANS_DETAIL"
 		                                                                                     style="left: 940px; position: absolute; top: 400px;"/></div><br />
-	<div style="left: 620px; position: absolute; top: 500px; color: white;"> 答案：	</div><input type="text" name="ANS_DETAIL"
-		                                                                                     style="left: 690px; position: absolute; top: 500px;"/></div><br />		
+	<!--  <div style="left: 620px; position: absolute; top: 500px; color: white;"> 答案：	</div><input type="text" name="ANS_DETAIL"
+		                                                                                     style="left: 690px; position: absolute; top: 500px;"/></div><br />		-->
 	<input class="button" type="submit" value="插入" onclick="document.form1.Submit();"
 		                          style="left: 720px; position: absolute; top: 550px;
 		                          height: 30px;width: 50px;"/>	                                                                                     

@@ -58,7 +58,7 @@ public class insertrealize implements ALLinterface{
 		    try {
 		    	String sql = "insert into answer values(?,?,?)";
 		        pstmt = (PreparedStatement) conn.prepareStatement(sql);
-		        pstmt.setString(1, ANS_NO);
+		        pstmt.setString(1, c);
 		        pstmt.setString(2,ANS_DETAIL );
 		        pstmt.setString(3, a);		     
 		        System.out.println("fhzwow");

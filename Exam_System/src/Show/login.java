@@ -67,7 +67,7 @@ public class login extends HttpServlet {
 			response.setContentType("text/html;charset=utf-8");
 			request.setCharacterEncoding("UTF-8");
 			//request.getRequestDispatcher("showofstudent.html").forward(request, response);
-		    response.sendRedirect("showofstudent.html");
+		    response.sendRedirect("showofstudent.jsp");
 		
 		}
 		if(passtipe==2)//跳转老师页面
@@ -75,14 +75,14 @@ public class login extends HttpServlet {
 			//out.println("t");
 			//System.out.println("t");
 			request.setAttribute("teano", no);//保存老师学号
-			response.sendRedirect("showofteacher.html");
+			response.sendRedirect("showofteacher.jsp");
 		}
 		if(passtipe==3)//跳转管理员界面
 		{
 			//out.println("m");
 			//System.out.println("m");
 			request.setAttribute("manano", no);//保存管理员学号
-			response.sendRedirect("showofmanager.html");
+			response.sendRedirect("showofmanager.jsp");
 		}
 		//request.setAttribute("rightStu", w.getmassage(name));
 		
