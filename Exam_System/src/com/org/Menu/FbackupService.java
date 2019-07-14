@@ -34,7 +34,7 @@ public class FbackupService extends HttpServlet {
 		ALLinterface dd=new Dbdump();
 		try {
 			dd.backup("root","123", "exam", "D:\\java\\dbDump\\dbDump.sql");
-			response.sendRedirect("realbackup.html");
+			response.sendRedirect("realbackup.jsp");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

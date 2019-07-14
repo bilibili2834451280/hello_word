@@ -38,11 +38,11 @@ String no1=(String)session.getAttribute("teano");
 <th width="200px" height="500px" rowspan="13" colspan="1">
  	 <a href=Finsert.jsp style="color:white; text-decoration: none;">新添试题</a><br/>
  <br />
- <a href=Fselect.html style="color:white; text-decoration: none;">查找试题</a><br/>
+ <a href=Fselect.jsp style="color:white; text-decoration: none;">查找试题</a><br/>
  <br />
  <a href=Fdelete.jsp style="color:white; text-decoration: none;">删除试题</a><br/>
  <br/>
-  <a href=Fdelete.jsp style="color:white; text-decoration: none;">生成试卷</a>
+  <a href=ExamInfoWrite.html style="color:white; text-decoration: none;">生成试卷</a>
  </th>
  <th width="1000px" height="500px" rowspan="13" colspan="13">
  	

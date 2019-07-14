@@ -38,10 +38,12 @@ String no1=(String)session.getAttribute("manano");
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=no1%></font>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="index.html"
-			margin-left:5 style="color: white; text-decoration: none;">退出登录</a> <br />
-		<br />
-		<table align="center" width="1500" height="600" border="2"bordercolor:rgba(0,0,0,0.9)>
-			<trbgcolor:rgba(0,0,0,0.9)>
+			margin-left:5 style="color: white; text-decoration: none;">退出登录</a><p>
+</p>
+<br/><br/>
+</div>
+<table align="center" width="1500" height="600" border="2" bordercolor:rgba(0,0,0,0.9)>
+<tr bgcolor:rgba(0,0,0,0.9)>
  <th width="200px" height="50px"><font  size="4" face="方正粗黑宋简体" color=white>管理员功能</th>
  <th width="1000px" height="50px">&nbsp;</th>
  
@@ -50,7 +52,7 @@ String no1=(String)session.getAttribute("manano");
 <th width="200px" height="500px" rowspan="13" colspan="1">
  	 <a href=insert.jsp style="color:white; text-decoration: none;">新添试题</a><br/>
  <br />
- <a href=select.html style="color:white; text-decoration: none;">查找试题</a><br/>
+ <a href=select.jsp style="color:white; text-decoration: none;">查找试题</a><br/>
  <br />
  <a href=delete.jsp style="color:white; text-decoration: none;">删除试题</a><br/>
  <br/>

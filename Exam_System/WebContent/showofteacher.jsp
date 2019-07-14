@@ -42,7 +42,7 @@ String no1=(String)session.getAttribute("teano");
  <br />
  <a href=Fdelete.jsp style="color:white; text-decoration: none;">删除试题</a><br/>
  <br/>
-  <a href=Fdelete.jsp style="color:white; text-decoration: none;">生成试卷</a>
+  <a href=ExamInfoWrite.html style="color:white; text-decoration: none;">生成试卷</a>
  </th>
  <th width="1000px" height="500px" rowspan="13" colspan="13"></th>
 </tr>

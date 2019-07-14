@@ -34,7 +34,7 @@ public class FDump extends HttpServlet {
 		ALLinterface dd=new Dbdump();
 		try {
 			dd.dataBaseDump("3306", "root", "123", "exam", "dbDump");
-			response.sendRedirect("backup.html");
+			response.sendRedirect("backup.jsp");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
