@@ -76,7 +76,7 @@ background-attachment: fixed;" >
 	                                                                                        <option value="blank">填空</option>
                                                                                             <option value="choice">选择</option>
                                                                                             <option value="judge">判断</option>
-                                                                                            <option value="short answer">简答</option>
+                                                                                            <option value="short_answer">简答</option>
                                                                                      </select>	      	                                                                                     			
 	
                                                                                                                                                                      

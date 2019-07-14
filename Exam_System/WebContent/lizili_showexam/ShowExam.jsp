@@ -40,20 +40,46 @@ import="java.util.List" %>
       <ul class="layui-nav layui-nav-tree"  lay-filter="test">
         <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;" >所有试卷</a>
-          <dl class="layui-nav-child">
-<%
-
-for(int i=0;i<tmp*2;i+=2){ %>
-            <dd><a href="javascript:refresh1(<%=i%>);"><%=tst_name_no.get(i)%></a></dd>
-<%} %>
+          <dl class="layui-nav-child" id="alltst">
+			<script>
+				var xmlhttptmp1;
+				if (window.XMLHttpRequest) {
+				//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+				xmlhttptmp1 = new XMLHttpRequest();
+				} else {
+					// IE6, IE5 浏览器执行代码
+				xmlhttptmp1 = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xmlhttptmp1.onreadystatechange = function() {
+						if (xmlhttptmp1.readyState == 4 && xmlhttptmp1.status == 200) {
+						$("#alltst").append(xmlhttptmp1.responseText);
+						}
+					}
+				xmlhttptmp1.open("GET", "./ShowExaminitalltst", true);
+				xmlhttptmp1.send();
+			</script>
           </dl>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;" >所有答案</a>
-          <dl class="layui-nav-child">
-          <% for(int i=0;i<tmp*2;i+=2){ %>
-            <dd><a href="javascript:refresh2(<%=i%>);"><%=tst_name_no.get(i)%>的答案</a></dd>
-           <%}%>
+          <dl class="layui-nav-child" id="allans">
+          	<script>
+				var xmlhttptmp2;
+				if (window.XMLHttpRequest) {
+				//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+					xmlhttptmp2 = new XMLHttpRequest();
+				} else {
+					// IE6, IE5 浏览器执行代码
+					xmlhttptmp2 = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+					xmlhttptmp2.onreadystatechange = function() {
+						if (xmlhttptmp2.readyState == 4 && xmlhttptmp2.status == 200) {
+						$("#allans").append(xmlhttptmp2.responseText);
+						}
+					}
+				xmlhttptmp2.open("GET", "./ShowExaminitallans", true);
+				xmlhttptmp2.send();
+			</script>
           </dl>
         </li>
         <li class="layui-nav-item"><a href="javascript:;">联系老师</a></li>
@@ -64,58 +90,23 @@ for(int i=0;i<tmp*2;i+=2){ %>
   <div class="layui-body">
     <!-- 内容主体区域 -->
     <div style="padding: 15px;">
-    	<form class="layui-form"  action="" lay-filter="example">
+    	<form class="layui-form"  action="" lay-filter="tst_alldetail">
 				<fieldset class="layui-elem-field layui-field-title"
 					style="margin-top: 30px;">
 					<legend>选择题</legend>
 				</fieldset>
 				
+
 				<div class="layui-collapse" lay-accordion="" id="Choice_question">
-					<div class="layui-colla-item">
-						<h2 class="layui-colla-title">题名</h2>
-						<div class="layui-colla-content layui-show">
-							<blockquote class="layui-elem-quote">
-								 中国共产党第十九次全国代表大会，是在全面建成小康社会决胜阶段、中国特色社会主义进入_____的关键时期召开的一次十分重要的大会。
-							</blockquote>
-							<div class="layui-form-item">
-								<div class="layui-input-block">
-									<input type="radio" name="sex" value="新时期" title="新时期" checked="">
-									<input type="radio" name="sex" value="新阶段" title="新阶段">
-									<input type="radio" name="sex" value="新征程" title="新征程">
-									<input type="radio" name="sex" value="新时代" title="新时代">
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="layui-colla-item">
-						<h2 class="layui-colla-title">题名</h2>
-						<div class="layui-colla-content">
-							<p>
-								题目内容
-							</p>
-						</div>
-					</div>
-					<div class="layui-colla-item">
-						<h2 class="layui-colla-title">题名</h2>
-						<div class="layui-colla-content">
-							<p>
-								题目内容
-							</p>
-						</div>
-					</div>
-					
-					<div class="layui-colla-item">
-						<h2 class="layui-colla-title">题名</h2>
-						<div class="layui-colla-content">
-							<p>题目内容</p>
-						</div>
-					</div>
+					<!--  动态加载-->
 				</div>
+				
 				<fieldset class="layui-elem-field layui-field-title"
 					style="margin-top: 30px;">
 					<legend>简答题</legend>
 				</fieldset>
 				<div class="layui-collapse" lay-accordion="" id="Short_Answer_Questions">
+				<!--  动态加载-->
 				<div class="layui-colla-item">
 					<h2 class="layui-colla-title">题名</h2>
 					<div class="layui-colla-content">
@@ -169,8 +160,6 @@ layui.use(['form', 'layedit', 'laydate'], function(){
 	  laydate.render({
 	    elem: '#date1'
 	  });
-	  //创建一个编辑器
-	  var editIndex = layedit.build('LAY_demo_editor');
 	 
 	  //自定义验证规则
 	  form.verify({
@@ -199,33 +188,53 @@ layui.use(['form', 'layedit', 'laydate'], function(){
 	});
 </script>
 <script>
-$(document).ready(function(){
-	  $("#inittest").click(function(){
-	    $("#Choice_question").remove();
-	    $("#Short_Answer_Questions").remove();
-	  });
-	});
-</script>
-<script>
 function refresh1(x) {
-	$("#Choice_question").remove();
-	$("#Short_Answer_Questions").remove();
-	var temp = document.createElement("form");
-	temp.action ="./ShowExam.jsp";//提交的地址
-	temp.method = "get";//也可指定为get
-	temp.style.display = "none";
-	var opt = document.createElement("textarea");
-	opt.name = tst_no;
-	opt.value = x;
-	temp.appendChild(opt);
-	document.body.appendChild(temp);
-	temp.submit();
-	<%String tst_no = request.getParameter("tst_no");
-	
-	%>
+	$("#Choice_question").empty();
+	var xmlhttptmp3;
+	if (window.XMLHttpRequest) {
+	//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+		xmlhttptmp3 = new XMLHttpRequest();
+	} else {
+		// IE6, IE5 浏览器执行代码
+		xmlhttptmp3 = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+		xmlhttptmp3.onreadystatechange = function() {
+			if (xmlhttptmp3.readyState == 4 && xmlhttptmp3.status == 200) {
+				$("#Choice_question").append(xmlhttptmp3.responseText);
+				layui.use('form', function() {
+				      var form = layui.form; 
+				       form.render();
+				   });
+			}
+		}
+	xmlhttptmp3.open("GET", "./ShowExamgetChoice?tst_no="+x, true);
+	xmlhttptmp3.send();
     return;
-} 
+}
 
+function refresh2(x) {
+	$("#Short_Answer_Questions").empty();
+	var xmlhttptmp4;
+	if (window.XMLHttpRequest) {
+	//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+		xmlhttptmp4 = new XMLHttpRequest();
+	} else {
+		// IE6, IE5 浏览器执行代码
+		xmlhttptmp4 = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttptmp4.onreadystatechange = function() {
+			if (xmlhttptmp4.readyState == 4 && xmlhttptmp4.status == 200) {
+				$("#Short_Answer_Questions").append(xmlhttptmp4.responseText);
+				layui.use('form', function() {
+				      var form = layui.form; 
+				       form.render();
+				   });
+			}
+		}
+	xmlhttptmp4.open("GET", "./ShowExamgetShort_Answer?tst_no="+x, true);
+	xmlhttptmp4.send();
+    return;
+}
 </script>
 </body>
 </html>

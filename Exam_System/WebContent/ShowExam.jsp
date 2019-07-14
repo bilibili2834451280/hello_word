@@ -87,80 +87,28 @@ import="java.util.List" %>
       </ul>
     </div>
   </div>
-  <div class="layui-body">
+
+  <div class="layui-body" id="tstbody">
     <!-- 内容主体区域 -->
     <div style="padding: 15px;">
-    	<form class="layui-form"  action="" lay-filter="example">
+    	<form class="layui-form"  action="" lay-filter="tst_alldetail">
 				<fieldset class="layui-elem-field layui-field-title"
 					style="margin-top: 30px;">
 					<legend>选择题</legend>
 				</fieldset>
 				
 
-				<div class="layui-collapse" lay-accordion="" id="Choice_question">
-
-						<div class='layui-colla-item'>
-							<h2 class='layui-colla-title'>题名</h2>
-							<div class='layui-colla-content layui-show'>
-								<blockquote class='layui-elem-quote'>
-									中国共产党第十九次全国代表大会，是在全面建成小康社会决胜阶段、中国特色社会主义进入_____的关键时期召开的一次十分重要的大会。
-								</blockquote>
-								<div class='layui-form-item'>
-									<div class='layui-input-block'>
-										<input type='radio' name='sex' value='新时期' title='新时期' checked=''> 
-										<input type='radio' name='sex' value='新阶段' title='新阶段'> 
-										<input type='radio' name='sex' value='新征程' title='新征程'> 
-										<input type='radio' name='sex' value='新时代' title='新时代'>
-									</div>
-								</div>
-							</div>
-						</div>
-
-
-						<div class="layui-colla-item">
-						<h2 class="layui-colla-title">test</h2>
-						<div class="layui-colla-content">
-							<p>
-								testtesttesttesttest
-							</p>
-						</div>
-					</div>
-					<div class="layui-colla-item">
-						<h2 class="layui-colla-title">题名</h2>
-						<div class="layui-colla-content">
-							<p>
-								testtesttesttesttesttesttest
-							</p>
-						</div>
-					</div>
-					
-					<div class="layui-colla-item">
-						<h2 class="layui-colla-title">题名</h2>
-						<div class="layui-colla-content">
-							<p>testtesttesttesttesttest</p>
-						</div>
-					</div>
+				<div class="layui-collapse" lay-accordion="" id="Choice_question" lay-filter="collapsetttst">
+					<!--  动态加载-->
 				</div>
 				
 				<fieldset class="layui-elem-field layui-field-title"
 					style="margin-top: 30px;">
 					<legend>简答题</legend>
 				</fieldset>
-				<div class="layui-collapse" lay-accordion="" id="Short_Answer_Questions">
-				<div class="layui-colla-item">
-					<h2 class="layui-colla-title">题名</h2>
-					<div class="layui-colla-content">
-						<blockquote class="layui-elem-quote">
-							 根据以下材料，选取角度，自拟题目，写一篇不少于800字的文章；除诗歌外，文体自选。</br>物各有性，水至淡，盐得味。水加水还是水，盐加盐还是盐。酸甜苦辣咸，五味调和，共存相生，百味纷呈。物如此，事犹是，人亦然。
-						</blockquote>
-								<div class="layui-form-item layui-form-text">
-									<label class="layui-form-label">作答区域</label>
-									<div class="layui-input-block">
-										<textarea placeholder="请输入内容" class="layui-textarea" lay-verify="required|content" name="desc"></textarea>
-									</div>
-								</div>
-					</div>
-				</div>
+				<div class="layui-collapse" lay-accordion="" id="Short_Answer_Questions" lay-filter="collapsetttst">
+				<!--  动态加载-->
+				
 				</div>
 
 					
@@ -175,7 +123,14 @@ import="java.util.List" %>
 		</form>
 	</div>
   </div>
-  
+  <script>$("#tstbody").hide();</script>
+  <div class="layui-body" id="ansbody">
+    <!-- 内容主体区域 -->
+    	<div style="padding: 15px;">
+    		<table class="layui-hide" id="ans_table"></table>
+  		</div>
+  </div>
+  <script>$("#ansbody").hide();</script>
   <div class="layui-footer">
     <!-- 底部固定区域 -->
     © layui.com - 底部固定区域
@@ -200,9 +155,6 @@ layui.use(['form', 'layedit', 'laydate'], function(){
 	  laydate.render({
 	    elem: '#date1'
 	  });
-	  //创建一个编辑器
-	  var editIndex = layedit.build('LAY_demo_editor');
-	 
 	  //自定义验证规则
 	  form.verify({
 	    title: function(value){
@@ -215,8 +167,8 @@ layui.use(['form', 'layedit', 'laydate'], function(){
 	      ,'密码必须6到12位，且不能出现空格'
 	    ]
 	    ,content: function(value){
-	    	if(value.length < 800){
-		        return '至少要写800个字符啊';
+	    	if(value.length < 20){
+		        return '至少要写20个字符啊';
 		      }
 	    }
 	  });
@@ -227,29 +179,79 @@ layui.use(['form', 'layedit', 'laydate'], function(){
 	    })
 	    return false;
 	  });
+	  element.on('collapse(collapsetttst)', function(data){
+		    layer.msg('展开状态：'+ data.show);
+		  });
 	});
 </script>
 <script>
 function refresh1(x) {
+	
+	$("#ansbody").hide();
 	$("#Choice_question").empty();
-	var xmlhttptmp3;
+	$("#Short_Answer_Questions").empty();
+	
+	var xmlhttptmp3;//选择题连接
+	var xmlhttptmp4;//简答题连接
+	
 	if (window.XMLHttpRequest) {
 	//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
 		xmlhttptmp3 = new XMLHttpRequest();
+		xmlhttptmp4 = new XMLHttpRequest();
 	} else {
 		// IE6, IE5 浏览器执行代码
 		xmlhttptmp3 = new ActiveXObject("Microsoft.XMLHTTP");
+		xmlhttptmp4 = new ActiveXObject("Microsoft.XMLHTTP");
+		
 	}
-		xmlhttptmp3.onreadystatechange = function() {
+	//开启监听,,等待加载
+	xmlhttptmp3.onreadystatechange = function() {
 			if (xmlhttptmp3.readyState == 4 && xmlhttptmp3.status == 200) {
-			$("#Choice_question").append(xmlhttptmp3.responseText);
+				$("#Choice_question").append(xmlhttptmp3.responseText);
+				//刷新radio等动态元素
+				layui.use('form', function() {
+				      var form = layui.form; 
+				       form.render();
+				   });
+			}
+		}
+	xmlhttptmp4.onreadystatechange = function() {
+			if (xmlhttptmp4.readyState == 4 && xmlhttptmp4.status == 200) {
+				$("#Short_Answer_Questions").append(xmlhttptmp4.responseText);
+				layui.use('element', function() {
+                    var element = layui.element;
+                    element.init();
+                });
+				$("#tstbody").show();//更新完成
 			}
 		}
 	xmlhttptmp3.open("GET", "./ShowExamgetChoice?tst_no="+x, true);
+	xmlhttptmp4.open("GET", "./ShowExamgetShort_Answer?tst_no="+x, true);
 	xmlhttptmp3.send();
+	xmlhttptmp4.send();
     return;
-} 
+}
 
+function refresh2(x) {
+	$("#tstbody").hide();
+	
+	table.render({
+	    elem: '#ans_table'
+	    ,url:"/ExamShowans_table?tst_no="+x
+	    ,cellMinWidth: 80 
+	    ,cols: [[
+	      {field:'pro_no', width:80, title: '题目编号', sort: true}
+	      ,{field:'cha_no', width:80, title: '章节编号'}
+	      ,{field:'cha_title', width:80, title: '章节标题', sort: true}
+	      ,{field:'cha_mpiont', width:80, title: '章节要点'}
+	      ,{field:'ans_detail', title: '答案', width: '30%', minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+	      ,{field:'pro_dif', title: '难度', sort: true}
+	      ,{field:'ans_no', title: '答案编号', sort: true}
+	    ]]
+	  });
+	$("#ansbody").show();
+    return;
+}
 </script>
 </body>
 </html>
