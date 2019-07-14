@@ -7,13 +7,12 @@ import="java.util.List" %>
 <html>
 <head>
   <meta charset="utf-8">
-  <title>layui</title>
+  <title>试卷库</title>
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <script src="./jquery-3.4.1.min.js"></script>
   <link rel="stylesheet" href="./layui-v2.5.4/layui/css/layui.css"  media="all">
-  <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -31,7 +30,7 @@ import="java.util.List" %>
           <dd><a href="">安全设置</a></dd>
         </dl>
       </li>
-      <li class="layui-nav-item"><a href="">退了</a></li>
+      <li class="layui-nav-item"><a href="index.html">退出登陆</a></li>
     </ul>
   </div>
   
