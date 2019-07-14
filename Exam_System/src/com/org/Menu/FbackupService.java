@@ -33,7 +33,7 @@ public class FbackupService extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		ALLinterface dd=new Dbdump();
 		try {
-			dd.backup("root","123", "exam", "D:\\java\\dbDump\\test45678.sql");
+			dd.backup("root","123", "exam", "D:\\java\\dbDump\\dbDump.sql");
 			response.sendRedirect("realbackup.html");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

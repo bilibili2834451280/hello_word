@@ -67,7 +67,7 @@ public class login extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("stuno", no);
-			String url ="showofstudent.jsp;jsessionid="+session.getId();
+			String url ="ShowExam.jsp;jsessionid="+session.getId();
 			url = response.encodeURL(url);
 			request.getRequestDispatcher(url).forward(request, response);
 			
