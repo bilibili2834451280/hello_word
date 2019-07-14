@@ -11,4 +11,6 @@ public interface ALLinterface {
 	int delete(String no);
 	void dataBaseDump(String port,String username,String password,String databasename,String sqlname)throws Exception ;
 	void backup(String root,String pwd,String dbName,String filePath);
+	void searchdelete(String no);
+	String[] getnumbypro_state();
 }

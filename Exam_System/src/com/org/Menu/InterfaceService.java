@@ -159,13 +159,16 @@ public class InterfaceService {
 		PrintWriter out = response.getWriter();
 		
 		String  a=request.getParameter("PRO_NO");//获取NO
-		deleterealize fdelete=new deleterealize();
-		int judge=fdelete.delete(a);
-		if(judge!=0) {
-			//response.sendRedirect("Fdelete.jsp");
-			out.println("<script language='javascript'>alert('删除成功！');window.location.href='showofteacher.jsp'</script>");
+		searchdeleterealize se=new searchdeleterealize();
+		selectrealize dao = new selectrealize();
+		boolean judge=dao.check(a);
+		if(judge)
+		{
+			se.searchdelete(a);
+			out.println("<script language='javascript'>alert('操作成功，等待管理员确认！');window.location.href='showofteacher.jsp'</script>");
 		}
-		else {
+		else
+		{
 			out.println("<script language='javascript'>alert('查找不到要删除的试题！');window.location.href='showofteacher.jsp'</script>");
 		}
 		

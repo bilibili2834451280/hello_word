@@ -115,4 +115,49 @@ public class selectrealize implements ALLinterface{
 		
 	}
 
+	@Override
+	public void searchdelete(String no) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public String[] getnumbypro_state() {
+		String[] stuid=new String[1000];
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+
+			// 2.连接数据库
+			conn = openandclose.getConnection();
+			
+			// 3. 操作数据库
+			String sql = "select count(*) from problem where pro_state='1'";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			rs.next();
+			stuid[0]=rs.getString("count(*)");
+			if (Integer.parseInt(stuid[0])!=0) {
+				String sql2 = "select pro_no from problem where pro_state='1'";
+				pstmt = conn.prepareStatement(sql2);
+				rs = pstmt.executeQuery();
+				for(int j=0;j<Integer.parseInt(stuid[0]);j++){
+					rs.next();
+					stuid[j+1]=rs.getString("pro_no");
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+
+			// 4.关闭数据库
+			openandclose.closeResultSet(rs);
+			openandclose.closeStatement(pstmt);
+			openandclose.closeConnection(conn);
+		}
+		return stuid;
+	}
+
 }

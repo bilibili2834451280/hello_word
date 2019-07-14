@@ -79,10 +79,8 @@ String no1=(String)session.getAttribute("manano");
 		                          style="left: 720px; position: absolute; top: 550px;
 		                          height: 30px;width: 50px;"/>	                                                                                     
 		<div style="left: 800px; position: absolute; top: 450px; color: white;"> 习题类型： <select name="CHA_TYPE" style="left: 140px; position: absolute; top: 0px;width: 190px;">
-	                                                                                        <option value="blank">填空</option>
+	                                                                                        <option value="blank">填空及简答</option>
                                                                                             <option value="choice">选择</option>
-                                                                                            <option value="judge">判断</option>
-                                                                                            <option value="short answer">简答</option>
                                                                                      </select>	      	                                                                                     			
 	
                                                                                                                                                                      

@@ -105,6 +105,16 @@ public class insertrealize implements ALLinterface{
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public void searchdelete(String no) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public String[] getnumbypro_state() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	
 	
