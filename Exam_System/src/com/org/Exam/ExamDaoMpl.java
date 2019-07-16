@@ -327,4 +327,61 @@ public class ExamDaoMpl implements ExamDao{
 		}
 		return tmp;
 	}
+	public String getAnsbyNo(String no1){
+		String ans=new String();
+		Connection conn = ExamUtils.getConnection();
+		PreparedStatement stmt = null;
+		try {
+			String sql = null;
+			sql = "select ans_detail from answer where pro_no='"+no1+"'";
+			stmt=conn.prepareStatement(sql);
+			ResultSet rs2 = stmt.executeQuery();
+			if(rs2.next()) {
+				ans=rs2.getString("ans_detail");
+			}
+			ExamUtils.closeStatement(stmt);
+			ExamUtils.closeConnection(conn);
+		} catch (Exception ee) {
+			ee.printStackTrace();
+		}
+		return ans;
+	}
+	public int getScorebyno(String no1){
+		int score=100;
+		Connection conn = ExamUtils.getConnection();
+		PreparedStatement stmt = null;
+		try {
+			String sql = null;
+			sql = "select tst_score from test where tst_no='"+no1+"'";
+			stmt=conn.prepareStatement(sql);
+			ResultSet rs2 = stmt.executeQuery();
+			if(rs2.next()) {
+				score=Integer.parseInt(rs2.getString("tst_score"));
+			}
+			ExamUtils.closeStatement(stmt);
+			ExamUtils.closeConnection(conn);
+		} catch (Exception ee) {
+			ee.printStackTrace();
+		}
+		return score;
+	}
+	public void ansSaved(String tst_no,String no1,String ans,String score){
+		Connection conn = ExamUtils.getConnection();
+		PreparedStatement stmt = null;
+		try {
+			String sql = null;
+			sql = "INSERT INTO stuans (stu_no,tst_no,stu_ans,stu_score) VALUES(?,?,?,?)";
+			stmt=conn.prepareStatement(sql);
+			stmt.setString(1, no1);
+			stmt.setString(2, tst_no);
+			stmt.setString(3, ans);
+			stmt.setString(4, score);
+			stmt.executeUpdate();
+			ExamUtils.closeStatement(stmt);
+			ExamUtils.closeConnection(conn);
+		} catch (Exception ee) {
+			ee.printStackTrace();
+		}
+	}
+	
 }

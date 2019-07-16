@@ -35,9 +35,8 @@ String no1=(String)session.getAttribute("manano");
 %>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="6"
 			face="方正粗黑宋简体" color=white>欢迎进入管理员试题库管理系统
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=no1%></font>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="index.html"
+		&nbsp;&nbsp;&nbsp;&nbsp;<a href="index.html"
 			margin-left:5 style="color: white; text-decoration: none;">退出登录</a><p>
 </p>
 <br/><br/>
@@ -68,7 +67,12 @@ String no1=(String)session.getAttribute("manano");
  	    int num=Integer.parseInt(s[0]);
  	    if(num!=0){
  	%>
- 	<div style="padding: 300px 0px 0px 700px; color:white;">有<%=num%>条试题待删除请确认后删除！</div>
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	<div style="padding: 300px 0px 0px 700px; color:white;"><p>有<%=num%>条试题待删除请确认后删除！</p></div>
  	<% 
  	      for(int j=0;j<num;j++){
  	%>    	
@@ -77,16 +81,18 @@ String no1=(String)session.getAttribute("manano");
  	      }
  	    }
  	%>
-
- 	<div class="divcss6" >请输入你要删除的试题编号：</div><br />
- 	</div> <input type="text" name="PRO_NO" 
-	style="left: 630px; position: absolute; top: 300px;
+ 	
+ 	<div>
+ 	<div style="padding: 100px 0px 0px 0px;" class="divcss6" >请输入你要删除的试题编号：</div><br />
+ 	 	<input class="button" type="submit" value="删除" onclick="document.form1.Submit();"
+		style="left: 750px; position: absolute; top: =470px;
+		height: 30px;width: 50px;"/>
+ 	<input type="text" name="PRO_NO" 
+	style="left: 630px; position: absolute; top: 400px;
 	border:0px;
 	height: 30px;width: 300px;"/><br />
+	</div> 
 	
-	<input class="button" type="submit" value="删除" onclick="document.form1.Submit();"
-		style="left: 750px; position: absolute; top: 370px;
-		height: 30px;width: 50px;"/>
  </th>
 </tr>
 

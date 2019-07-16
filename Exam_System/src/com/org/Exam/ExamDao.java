@@ -18,4 +18,9 @@ public interface ExamDao {
 	List<String> getExamShort_Answer(String tst_no);
 	
 	List<Answer_table> getExamanstable(String tst_no);
+	
+	String getAnsbyNo(String no1);
+	int getScorebyno(String no1);
+	void ansSaved(String tst_no,String no1,String ans,String score);
+	
 }

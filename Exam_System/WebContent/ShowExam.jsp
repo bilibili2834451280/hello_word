@@ -13,6 +13,7 @@ import="java.util.List" %>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <script src="./jquery-3.4.1.min.js"></script>
   <link rel="stylesheet" href="./layui-v2.5.4/layui/css/layui.css"  media="all">
+  <script> var now_tst_no="0";</script>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -26,8 +27,6 @@ import="java.util.List" %>
           <%= (String)session.getAttribute("stuno") %>
         </a>
         <dl class="layui-nav-child">
-          <dd><a href="">基本资料</a></dd>
-          <dd><a href="">安全设置</a></dd>
         </dl>
       </li>
       <li class="layui-nav-item"><a href="index.html">退出登陆</a></li>
@@ -81,8 +80,7 @@ import="java.util.List" %>
 			</script>
           </dl>
         </li>
-        <li class="layui-nav-item"><a href="javascript:;">联系老师</a></li>
-        <li class="layui-nav-item"><a href="javascript:;">发布题解</a></li>
+        
       </ul>
     </div>
   </div>
@@ -136,7 +134,7 @@ import="java.util.List" %>
   <script>$("#ansbody").hide();</script>
   <div class="layui-footer">
     <!-- 底部固定区域 -->
-    © layui.com - 底部固定区域
+    © 底部固定区域
   </div>
 	
 </div>
@@ -177,9 +175,15 @@ layui.use(['form', 'layedit', 'laydate'], function(){
 	  });
 	  //监听提交
 	  form.on('submit(demo1)', function(data){
-	    layer.alert(JSON.stringify(data.field), {
-	      title: '最终的提交信息'
-	    })
+	    $.ajax({
+		url:'./AnswerSaved.html',
+		type:'POST',
+		data:"tst_no="+now_tst_no+"&json1="+JSON.stringify(data.field),
+		dataType:'text',
+		success:function(result){
+			alert(result);
+		}
+	    });
 	    return false;
 	  });
 	});
@@ -187,6 +191,7 @@ layui.use(['form', 'layedit', 'laydate'], function(){
 <script>
 function refresh1(x) {
 	
+	now_tst_no=x;
 	$("#ansbody").hide();
 	$("#Choice_question").empty();
 	$("#Short_Answer_Questions").empty();
@@ -233,6 +238,7 @@ function refresh1(x) {
 }
 
 function refresh2(x) {
+	now_tst_no="0";
 	$("#tstbody").hide();
 
 	layui.use('table', function () {

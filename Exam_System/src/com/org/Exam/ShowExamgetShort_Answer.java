@@ -45,7 +45,7 @@ public class ShowExamgetShort_Answer extends HttpServlet {
 		  ans+="<div class='layui-form-item layui-form-text'>";
 		  ans+="<label class='layui-form-label'>作答区域</label>";
 		  ans+="<div class='layui-input-block'>"; 
-		  ans+="<textarea placeholder='请输入内容' class='layui-textarea' lay-verify='required|content' name='"+Short_Answertmp.get(i)+"'></textarea>";
+		  ans+="<textarea placeholder='请输入内容' class='layui-textarea' lay-verify='required' name='"+Short_Answertmp.get(i)+"'></textarea>";
 		  ans+="</div></div></div></div>"; 
 		  }
 		 

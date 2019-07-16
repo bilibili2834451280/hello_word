@@ -26,7 +26,7 @@ background-attachment: fixed;" >
 String no1=(String)session.getAttribute("teano");  
 %>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font  size="6" face="方正粗黑宋简体" color=white>欢迎进入教师试题库管理系统 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=no1%></font>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="index.html" margin-left:5 style="color:white; text-decoration: none;">退出登录</a>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="index.html" margin-left:5 style="color:white; text-decoration: none;">退出登录</a>
 <br/><br/>
 <table align="center" width="1500" height="600" border="2" bordercolor:rgba(0,0,0,0.9)>
 <tr bgcolor:rgba(0,0,0,0.9)>
